@@ -1,0 +1,41 @@
+{
+  "name": "postcssify",
+  "version": "1.0.0",
+  "description": "Browserify transform for postcss",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "browserify",
+    "postcss",
+    "transform"
+  ],
+  "author": "Vigour <dev@vigour.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vigour-io/postcssify/issues"
+  },
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/postcssify"
+  },
+  "homepage": "https://github.com/vigour-io/postcssify",
+  "dependencies": {
+    "postcss": "^5.0.19",
+    "through2": "^2.0.1",
+    "vigour-fs-promised": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-import": "^8.1.0",
+    "tape": "^4.5.1"
+  }
+}

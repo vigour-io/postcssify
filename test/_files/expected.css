@@ -1,0 +1,15 @@
+a {
+  font-weight: bold;
+}
+
+body {
+  background: rgb(102, 51, 153);
+}
+
+a {
+  color: red;
+}
+
+body {
+  color: blue;
+}
