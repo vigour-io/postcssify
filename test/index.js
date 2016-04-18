@@ -4,7 +4,6 @@ var path = require('path')
 var test = require('tape')
 var browserify = require('browserify')
 var fs = require('vigour-fs-promised')
-var cssnext = require('postcss-cssnext')
 var postcssify = require('../')
 
 test('defaults', function (t) {
@@ -14,7 +13,7 @@ test('defaults', function (t) {
   var expected = path.join(__dirname, '_files', 'expected.css')
   brow.plugin(postcssify, {
     plugins: [
-      cssnext
+      'postcss-cssnext'
     ],
     out: outFile
   })
