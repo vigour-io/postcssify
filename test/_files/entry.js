@@ -1,5 +1,7 @@
 'use strict'
 
-require('./styles.css')
-var x = require('./x')
-console.log('x', x)
+require('./before.css')
+var component = require('./component')
+console.log('component', component)
+require('./after.css')
+require('./requiredtwice.css')

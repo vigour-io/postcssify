@@ -1,0 +1,10 @@
+@import 'morebefore.css';
+
+:root {
+  --before: 1px;
+  --common: url('before');
+}
+
+#before {
+  border: var(--before)
+}

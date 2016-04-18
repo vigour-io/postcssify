@@ -1,0 +1,8 @@
+:root {
+  --morecomponent: 1px;
+  --common: url('more-component');
+}
+
+#morecomponent {
+  border: var(--morecomponent)
+}

@@ -1,0 +1,8 @@
+:root {
+  --requiredtwice: 1px;
+  --common: url('requiredtwice');
+}
+
+#requiredtwice {
+  border: var(--requiredtwice)
+}

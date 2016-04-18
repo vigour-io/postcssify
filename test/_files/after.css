@@ -1,0 +1,10 @@
+@import 'moreafter.css';
+
+:root {
+  --after: 1px;
+  --common: url('after');
+}
+
+#after {
+  border: var(--after)
+}

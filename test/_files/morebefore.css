@@ -1,0 +1,8 @@
+:root {
+  --morebefore: 1px;
+  --common: url('more-before');
+}
+
+#morebefore {
+  border: var(--morebefore)
+}

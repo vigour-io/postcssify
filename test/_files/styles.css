@@ -1,9 +1,0 @@
-@import 'more.css';
-
-:root {
-  --mainColor: red;
-}
-
-body {
-  background: rebeccapurple;
-}
