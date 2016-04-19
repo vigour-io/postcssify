@@ -7,15 +7,17 @@ var fs = require('vigour-fs-promised')
 var postcssify = require('../')
 
 test('defaults', function (t) {
-  t.plan(1)
+  t.plan(2)
   var brow = browserify()
   var outFile = path.join(__dirname, '_files', 'out.css')
   var expected = path.join(__dirname, '_files', 'expected.css')
+  var expectedMap = path.join(__dirname, '_files', 'expected.map')
   brow.plugin(postcssify, {
     plugins: [
       'postcss-cssnext'
     ],
-    out: outFile
+    out: outFile,
+    map: outFile + '.map'
   })
   brow.add(path.join(__dirname, '_files', 'entry.js'))
   brow.bundle(function onComplete (err) {
@@ -26,9 +28,12 @@ test('defaults', function (t) {
     setTimeout(function () {
       Promise.all([
         fs.readFileAsync(outFile, 'utf8'),
-        fs.readFileAsync(expected, 'utf8')
+        fs.readFileAsync(expected, 'utf8'),
+        fs.readFileAsync(outFile + '.map', 'utf8'),
+        fs.readFileAsync(expectedMap, 'utf8')
       ]).then((contents) => {
         t.equal(contents[0], contents[1], 'produces the expected css')
+        t.equal(contents[2], contents[3], 'produces the expected source map')
       }).catch((reason) => {
         console.error('reading files', reason)
       })
