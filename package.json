@@ -31,7 +31,6 @@
     "lodash.sortby": "^4.4.2",
     "lodash.uniq": "^4.2.1",
     "postcss": "^5.0.19",
-    "postcss-import": "^8.1.0",
     "through2": "^2.0.1",
     "vigour-fs-promised": "^2.0.2"
   },
@@ -41,6 +40,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "postcss-cssnext": "^2.5.2",
-    "tape": "^4.5.1"
+    "tape": "^4.5.1",
+    "postcss-import": "^8.1.0"
   }
 }

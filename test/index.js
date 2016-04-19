@@ -13,6 +13,9 @@ test('defaults', function (t) {
   var expected = path.join(__dirname, '_files', 'expected.css')
   var expectedMap = path.join(__dirname, '_files', 'expected.map')
   brow.plugin(postcssify, {
+    filePlugins: [
+      'postcss-import'
+    ],
     plugins: [
       'postcss-cssnext'
     ],

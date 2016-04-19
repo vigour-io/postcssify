@@ -7,10 +7,13 @@ Browserify transform for postcss
 
 ## Usage
 
-`browserify <entry> -p [postcssify --plugins <plugins> --out <cssOut>] -o <jsOut>`
+`browserify <entry> -p [postcssify --filePlugins <filePlugins> --plugins <plugins> --out <cssOut>] -o <jsOut>`
 
 - `entry`: the entry file for browserify (see [browserify docs](https://github.com/substack/node-browserify#usage))
-- `plugins`: postcss plugin package name, e.g. `postcss-cssnext`.
+- `filePlugins`: package name of postcss plugin you wish to run against every css file individually, e.g. `postcss-import`
+  + You can pass multiple file plugins by repeating this argument, e.g. `--filePlugins postcss-import --plugins postcss-import-url`.
+  + Don't forget to install the plugins you use, e.g. `npm i postcss-import postcss-import-url`
+- `plugins`: package name of postcss plugin you wish to run against the merged css, e.g. `postcss-import`postcss plugin package name, e.g. `postcss-cssnext`.
   + You can pass multiple plugins by repeating this argument, e.g. `--plugins postcss-cssnext --plugins postcss-canadian-stylesheets`.
   + Don't forget to install the plugins you use, e.g. `npm i postcss-cssnext postcss-canadian-stylesheets`
 - `cssOut`: path where to save the resulting CSS
