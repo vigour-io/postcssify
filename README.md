@@ -23,6 +23,6 @@ Tell postcssify to generate source maps with `--map`
 `browserify <entry> -p [postcssify --plugins <plugin> --out <cssOut> --map <mapOption>] -o <jsOut>`
 
 - `mapOption`:
-  + Set to `true` to create inline source maps. This is the default.
+  + Set to `true` to create inline source maps. This is the default, but can also be specified explicitly with `--map` or `--map true` or `--map inline`.
   + Set to a string to create a source map and save it at the specified file path, e.g. `--map out.css.map`
-  + Set to `false` to tell postcssify **not** to create source maps. This speeds up the whole process a little bit.
+  + Set to `false` (with `--map false` or `--no-map`) to tell postcssify **not** to create source maps. This should speed up the whole process a little bit; benchmarks coming soon.
