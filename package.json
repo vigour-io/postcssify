@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/vigour-io/postcssify",
   "dependencies": {
+    "lodash.findkey": "^4.3.0",
     "lodash.flatten": "^4.2.0",
     "lodash.isempty": "^4.2.1",
     "lodash.reverse": "^4.0.1",
