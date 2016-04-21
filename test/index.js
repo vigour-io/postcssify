@@ -10,6 +10,7 @@ test('defaults', function (t) {
   t.plan(2)
   var brow = browserify()
   var outFile = path.join(__dirname, '_files', 'out.css')
+  var outMap = outFile + '.map'
   var expected = path.join(__dirname, '_files', 'expected.css')
   var expectedMap = path.join(__dirname, '_files', 'expected.map')
   brow.plugin(postcssify, {
@@ -20,7 +21,7 @@ test('defaults', function (t) {
       'postcss-cssnext'
     ],
     out: outFile,
-    map: outFile + '.map'
+    map: outMap
   })
   brow.add(path.join(__dirname, '_files', 'entry.js'))
   brow.bundle(function onComplete (err) {
@@ -41,7 +42,10 @@ test('defaults', function (t) {
         console.error('reading files', reason)
       })
       .then(() => {
-        return fs.removeAsync(outFile)
+        return Promise.all([
+          fs.removeAsync(outFile),
+          fs.removeAsync(outMap)
+        ])
       })
     }, 1500)
   })
