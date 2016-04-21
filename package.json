@@ -11,8 +11,10 @@
   },
   "keywords": [
     "browserify",
+    "plugin",
     "postcss",
-    "transform"
+    "transform",
+    "browserify-plugin"
   ],
   "author": "Vigour <dev@vigour.io>",
   "license": "ISC",
