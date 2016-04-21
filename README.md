@@ -27,7 +27,7 @@ $ browserify entry.js -o bundle.js\
     --filePlugins postcss-import\
     --filePlugins postcss-import-url\
     --plugins postcss-cssnext\
-    --plugins postcss-cssnano\
+    --plugins cssnano\
     --out build.css\
     --no-map
   ]
@@ -48,7 +48,7 @@ Notice the [subarg](https://github.com/substack/subarg) syntax. You can also use
 Don't forget to install the postcss plugins you want to use
 
 ```sh
-$ npm i postcss-import postcss-import-url postcss-cssnext postcss-cssnano --save-dev
+$ npm i postcss-import postcss-import-url postcss-cssnext cssnano --save-dev
 ```
 
 ## CSS merge order
