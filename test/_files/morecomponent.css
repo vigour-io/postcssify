@@ -4,5 +4,5 @@
 }
 
 #morecomponent {
-  border: var(--morecomponent)
+  border: var(--morecomponent);
 }

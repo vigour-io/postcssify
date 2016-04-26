@@ -4,5 +4,5 @@
 }
 
 #requiredtwice {
-  border: var(--requiredtwice)
+  border: var(--requiredtwice);
 }

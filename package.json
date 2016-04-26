@@ -32,12 +32,20 @@
   "dependencies": {
     "browser-resolve": "^1.11.1",
     "http-https": "^1.0.0",
+    "lodash.reverse": "^4.0.1",
+    "lodash.uniq": "^4.2.1",
     "postcss": "^5.0.19",
     "postcss-cssnext": "^2.5.2",
     "through2": "^2.0.1",
-    "vigour-util": "^2.0.5"
+    "vigour-fs-promised": "^2.0.2",
+    "vigour-util": "^2.0.6"
   },
   "engines": {
     "node": ">=4"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "tape": "^4.5.1",
+    "vigour-fs-promised": "^2.0.2"
   }
 }

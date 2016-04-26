@@ -13,13 +13,7 @@ test('defaults', function (t) {
   var outMap = outFile + '.map'
   var expected = path.join(__dirname, '_files', 'expected.css')
   var expectedMap = path.join(__dirname, '_files', 'expected.map')
-  brow.plugin(postcssify, {
-    filePlugins: [
-      'postcss-import'
-    ],
-    plugins: [
-      'postcss-cssnext'
-    ],
+  brow.transform(postcssify, {
     out: outFile,
     map: outMap
   })

@@ -1,4 +1,4 @@
-@import 'moreComponent.css';
+@import './moreComponent.css';
 
 :root {
   --component: 1px;
@@ -6,7 +6,7 @@
 }
 
 #component {
-  border: var(--component)
+  border: var(--component);
 }
 
 #common {
