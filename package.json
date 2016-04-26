@@ -33,6 +33,7 @@
     "browser-resolve": "^1.11.1",
     "http-https": "^1.0.0",
     "postcss": "^5.0.19",
+    "postcss-cssnext": "^2.5.2",
     "through2": "^2.0.1",
     "vigour-util": "^2.0.5"
   },
