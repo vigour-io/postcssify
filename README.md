@@ -8,7 +8,7 @@
 <!-- VDOC END -->
 
 # postcssify
-[Browserify](http://browserify.org/) plugin for postcss (*[watchify](https://github.com/substack/watchify) support coming soon!*)
+[Browserify](http://browserify.org/) transform for postcss
 
 ## Install
 ```sh
@@ -23,7 +23,7 @@ require('some.css')
 
 ```sh
 $ browserify entry.js -o bundle.js\
-  -p [ postcssify\
+  -t [ postcssify\
     --filePlugins postcss-import\
     --filePlugins postcss-import-url\
     --plugins postcss-cssnext\
@@ -40,10 +40,6 @@ Notice the [subarg](https://github.com/substack/subarg) syntax. You can also use
 - **plugins** (*array*)- npm package names of plugins to run against the result of merging all required CSS files
 - **out** - name of produced bundle (defaults to `bundle.css`)
 - **map** - name of produced source map file. Set to `false` if you don't want to produce source maps at all. Set to `true` or `inline` if you want the source map inlined in the CSS bundle (this is the default).
-
-## Dependencies
-`npm install -g browserify` or `npm install -g watchify` (coming soon)
-
 
 Don't forget to install the postcss plugins you want to use
 
@@ -67,7 +63,7 @@ require('finalTouches.css')
 require('component.css')
 ```
 
-Let's create the CSS bundle (`browserify entry.js -p postcssify`):
+Let's create the CSS bundle (`browserify entry.js -t postcssify`):
 
 *bundle.css*
 ```css
