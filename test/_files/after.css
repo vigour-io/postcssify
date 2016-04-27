@@ -1,5 +1,5 @@
 @import './moreafter.css';
-
+/* commented imports should be ignored: @import './ignored.css'; */
 :root {
   --after: 1px;
   --common: url('after');

@@ -23,6 +23,8 @@
   border: 1px;
 }
 
+/* commented imports should be ignored:  */
+
 #after {
   border: 1px;
 }

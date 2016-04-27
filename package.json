@@ -31,6 +31,7 @@
   "homepage": "https://github.com/vigour-io/postcssify",
   "dependencies": {
     "browser-resolve": "^1.11.1",
+    "css-detective": "^1.0.0",
     "detective": "^4.3.1",
     "http-https": "^1.0.0",
     "lodash.reverse": "^4.0.1",
