@@ -1,6 +1,6 @@
 {
   "name": "postcssify",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Browserify transform for postcss",
   "main": "lib/index.js",
   "scripts": {
