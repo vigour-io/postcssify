@@ -7,12 +7,13 @@ require('./moreComponent.css');
 },{"./moreComponent.css":6}],4:[function(require,module,exports){
 'use strict'
 
+require('./entry.js')
 require('./requiredtwice.css')
 require('./component.css')
 
 module.exports = exports = 'component'
 
-},{"./component.css":3,"./requiredtwice.css":9}],5:[function(require,module,exports){
+},{"./component.css":3,"./entry.js":5,"./requiredtwice.css":9}],5:[function(require,module,exports){
 'use strict'
 
 require('./before.css')
