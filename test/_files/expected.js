@@ -13,7 +13,7 @@ require('./component.css')
 
 module.exports = exports = 'component'
 
-},{"./component.css":3,"./entry.js":5,"./requiredtwice.css":9}],5:[function(require,module,exports){
+},{"./component.css":3,"./entry.js":5,"./requiredtwice.css":10}],5:[function(require,module,exports){
 'use strict'
 
 require('./before.css')
@@ -24,12 +24,14 @@ require('./requiredtwice.css')
 
 // commented requires should be ignored: require('ignored.css')
 
-},{"./after.css":1,"./before.css":2,"./component":4,"./requiredtwice.css":9}],6:[function(require,module,exports){
+},{"./after.css":1,"./before.css":2,"./component":4,"./requiredtwice.css":10}],6:[function(require,module,exports){
 
 },{}],7:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
 },{"dup":6}],8:[function(require,module,exports){
 arguments[4][6][0].apply(exports,arguments)
 },{"dup":6}],9:[function(require,module,exports){
-arguments[4][6][0].apply(exports,arguments)
-},{"dup":6}]},{},[5]);
+require('./requiredtwice.css');
+},{"./requiredtwice.css":10}],10:[function(require,module,exports){
+require('./other.css');
+},{"./other.css":9}]},{},[5]);

@@ -1,0 +1,34 @@
+#morebefore {
+  border: 1px;
+}
+
+#before {
+  border: 1px;
+}
+
+#morecomponent {
+  border: 1px;
+}
+
+#component {
+  border: 1px;
+}
+
+#common {
+  background: url('requiredtwice');
+  border: 1px;
+}
+
+#moreafter {
+  border: 1px;
+}
+
+/* commented imports should be ignored:  */
+
+#after {
+  border: 1px;
+}
+
+#requiredtwice {
+  border: 1px;
+}
