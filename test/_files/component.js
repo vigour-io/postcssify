@@ -1,5 +1,6 @@
 'use strict'
 
+require('./entry.js')
 require('./requiredtwice.css')
 require('./component.css')
 
