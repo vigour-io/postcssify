@@ -136,8 +136,8 @@ test('source maps', function (t) {
       })
       .then(() => {
         return Promise.all([
-          // fs.removeAsync(jsOut),
-          // fs.removeAsync(cssOut)
+          fs.removeAsync(jsOut),
+          fs.removeAsync(cssOut)
         ])
       })
       .then(() => {
