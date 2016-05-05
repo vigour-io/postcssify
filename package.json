@@ -37,7 +37,6 @@
     "lodash.reverse": "^4.0.1",
     "lodash.uniq": "^4.2.1",
     "postcss": "^5.0.19",
-    "postcss-cssnext": "^2.5.2",
     "through2": "^2.0.1",
     "vigour-fs-promised": "^2.0.2",
     "vigour-util": "^2.0.6"
@@ -48,6 +47,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "budo": "^8.2.2",
+    "postcss-cssnext": "^2.5.2",
     "tape": "^4.5.1",
     "vigour-fs-promised": "^2.0.2",
     "vigour-spawn": "^1.0.9"
