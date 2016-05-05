@@ -83,3 +83,10 @@ enhanceRequire()
 require('entry.js') // required styles will simply be ignored
 enhanceRequire.restore()
 ```
+
+## Tests
+
+- `npm link`
+- `npm test`
+
+Among other things, this clones and links some repos. To remove the then, use `npm run clean`

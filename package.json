@@ -1,20 +1,20 @@
 {
   "name": "postcssify",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "description": "Browserify transform for postcss",
-  "main": "lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "node test | tap-difflet",
     "cover": "istanbul cover --report none --print detail test/index.js",
     "view-cover": "istanbul report html && open ./coverage/index.html",
-    "travis": "npm run cover -s && istanbul report lcov && ((cat coverage/lcov.info | coveralls) || exit 0)"
+    "travis": "npm run cover -s && istanbul report lcov && ((cat coverage/lcov.info | coveralls) || exit 0)",
+    "clean": "rm -rf ../postcssify-test-repos"
   },
   "keywords": [
     "browserify",
-    "plugin",
     "postcss",
     "transform",
-    "browserify-plugin"
+    "browserify-transform"
   ],
   "author": "Vigour <dev@vigour.io>",
   "license": "ISC",
@@ -47,7 +47,9 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "budo": "^8.2.2",
     "tape": "^4.5.1",
-    "vigour-fs-promised": "^2.0.2"
+    "vigour-fs-promised": "^2.0.2",
+    "vigour-spawn": "^1.0.9"
   }
 }
