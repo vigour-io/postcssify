@@ -62,7 +62,7 @@ exports.Bundle.prototype.addCSS = function addCSS (file, body, options) {
   var requires = []
   imports.map((item) => {
     if (isURL(item, { requireProtocol: true })) {
-      this.files[item] = { name: item, deps: [], isURL: true }
+      this.files[item] = { name: item, deps: [], isURL: true, isCSS: true }
     } else {
       requires.push(exports.toRequire(item))
     }
@@ -87,16 +87,13 @@ exports.Bundle.prototype.loadRemote = function loadRemote (filename) {
       response.on('data', (chunk) => {
         body += chunk.toString()
       })
-      response.on('error', (err) => {
-        console.log('http response err', err)
-        reject(err)
-      })
+      response.on('error', reject)
       response.on('end', () => {
         this.files[filename].body = body
         // console.log('filename', filename)
         // console.log('out', this.options.out)
         // console.log('[] map', this.options.map)
-        resolve(postcss([]).process(body, {
+        return resolve(postcss([]).process(body, {
           from: filename,
           to: this.options.out,
           map: this.options.map === false
@@ -111,18 +108,15 @@ exports.Bundle.prototype.loadRemote = function loadRemote (filename) {
           }))
       })
     })
-    request.on('error', (err) => {
-      console.log('http request err', err)
-      reject(err)
-    })
+    request.on('error', reject)
     request.end()
   })
 }
 
 exports.Bundle.prototype.rebundle = function rebundle (next) {
-  exports.order(this.files, this.entry)
+  return exports.order(this.files, this.entry)
     .then((sorted) => {
-      Promise.all(sorted.map((file) => {
+      return Promise.all(sorted.map((file) => {
         // console.log('file', file.name)
         if (isURL(file.name)) {
           // console.log('URL!')
@@ -205,7 +199,7 @@ exports.order = function order (files, file, ordering) {
 
   if (!curr) {
     // console.log('aborting, no', file)
-    throw new Error('No ' + file)
+    throw new Error('NOENT')
   }
 
   if (!ordering) {
@@ -220,10 +214,14 @@ exports.order = function order (files, file, ordering) {
   var proms = []
   for (let i = 0, len = curr.deps.length; i < len; i += 1) {
     // console.log(file, 'dep', curr.deps[i])
-    proms.push(exports.realpath(curr.name, curr.deps[i])
-      .then((realpath) => {
-        return order(files, realpath, ordering)
-      }))
+    if (isURL(curr.deps[i])) {
+      proms.push(order(files, curr.deps[i], ordering))
+    } else {
+      proms.push(exports.realpath(curr.name, curr.deps[i])
+        .then((realpath) => {
+          return order(files, realpath, ordering)
+        }))
+    }
   }
   return Promise.all(proms)
     .then((arrs) => {
@@ -234,6 +232,7 @@ exports.order = function order (files, file, ordering) {
       if (curr.isCSS) {
         arr.push(curr)
       }
+      delete ordering[file]
       return arr
     })
 }
