@@ -27,7 +27,7 @@ exports.getInstance = function getInstance (global, options) {
 }
 
 exports.Bundle = function Bundle (options) {
-  options.dest = options.out
+  options.out = options.out
     ? path.resolve(options.out)
     : path.join(process.cwd(), 'bundle.css')
   if (typeof options.map === 'undefined' ||
