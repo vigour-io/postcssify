@@ -18,9 +18,25 @@ exports.getInstance = function getInstance (global, options) {
   if (!global[key]) {
     global[key] = new exports.Bundle(options)
   }
-  if (options.force) {
+  if (!global[key].options) {
+    global[key].options = {}
+  }
+  if (!global[key].options.plugins) {
+    global[key].options.plugins = []
+  }
+  if (options.force) { // TODO find another way to do this
     for (let i = 0, len = options.force.length; i < len; i += 1) {
       global[key].options[options.force[i]] = options[options.force[i]]
+    }
+  }
+  if (options.plugins) {
+    if (typeof options.plugins === 'string') {
+      options.plugins = [options.plugins]
+    }
+    for (let i = 0, len = options.plugins.length; i < len; i += 1) {
+      if (global[key].options.plugins.indexOf(options.plugins[i]) === -1) {
+        global[key].options.push(options.plugins[i])
+      }
     }
   }
   return global[key]
@@ -41,10 +57,6 @@ exports.Bundle = function Bundle (options) {
     options.map = options.map
   }
   this.options = options
-}
-
-exports.Bundle.prototype.options = function options (opts) {
-
 }
 
 exports.Bundle.prototype.addFile = function addFile (file, body, deps, options, isCSS) {
@@ -140,9 +152,7 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
           }
           return prom
             .then((plugins) => {
-              let processor = postcss(plugins.map((plugin) => {
-                return require(plugin)
-              }))
+              let processor = postcss([])
               // console.log('from', file.name)
               // console.log('to', this.options.out)
               // console.log('map', this.options.map)
@@ -175,11 +185,23 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
                 inline: this.options.map === true
               }
           })
+          return postcss(this.options.plugins.map((plugin) => {
+            return require(plugin)
+          })).process(result, {
+            to: this.options.out,
+            map: this.options.map === false
+              ? false
+              : {
+                inline: this.options.map === true
+              }
+          })
+        })
+        .then((finalResult) => {
           var files = [
-            fs.writeFileAsync(this.options.out, result.css, 'utf8')
+            fs.writeFileAsync(this.options.out, finalResult.css, 'utf8')
           ]
           if (typeof this.options.map === 'string') {
-            files.push(fs.writeFileAsync(this.options.map, result.map, 'utf8'))
+            files.push(fs.writeFileAsync(this.options.map, finalResult.map, 'utf8'))
           }
 
           return Promise.all(files)
