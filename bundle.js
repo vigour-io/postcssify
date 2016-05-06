@@ -8,6 +8,7 @@ var detective = require('detective')
 var cssDetective = require('css-detective')
 var fs = require('vigour-fs-promised')
 var isURL = require('vigour-util/is/url')
+var logError = require('./logerror.js')
 
 const key = 'PostCSSifySingleton'
 const importRE = /@import[^;]*;/g
@@ -101,7 +102,7 @@ exports.Bundle.prototype.loadRemote = function loadRemote (filename) {
   }
   if (!this.downloads[filename]) {
     this.downloads[filename] = new Promise((resolve, reject) => {
-      console.log('downloading', filename)
+      // console.log('downloading', filename)
       var request = hh.get(filename, (response) => {
         var body = ''
         response.on('data', (chunk) => {
@@ -151,7 +152,7 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
               return Promise.all(file.options.plugins.map(function (plugin) {
                 return exports.resolve(file.name, plugin)
               }))
-            })
+            }, logError('resolving plugins'))
           } else {
             prom = prom.then(() => {
               return []
@@ -172,7 +173,7 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
                     inline: this.options.map === true
                   }
               })
-            })
+            }, logError('CSS -> AST'))
         }
       }))
         .then((results) => {
@@ -202,7 +203,7 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
                 inline: this.options.map === true
               }
           })
-        })
+        }, logError('all CSS -> AST'))
         .then((finalResult) => {
           var files = [
             fs.writeFileAsync(this.options.out, finalResult.css, 'utf8')
@@ -212,12 +213,17 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
           }
 
           return Promise.all(files)
-        })
+        }, logError('AST -> Result + plugins'))
         .then(() => {
           next()
         })
     }, (reason) => {
       // TODO Only ignore aborts
+      if (!reason.message === 'NOENT') {
+        console.error('sorting', reason.stack || reason)
+      } else {
+        // console.log('aborting')
+      }
       return next()
     })
 }
@@ -226,10 +232,10 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
 exports.order = function order (files, file, ordering) {
   var curr = files[file]
 
-  if (!curr) {
-    // console.log('aborting, no', file)
-    throw new Error('NOENT')
-  }
+  // if (!curr) {
+  //   // console.log('aborting, no', file)
+  //   throw new Error('NOENT')
+  // }
 
   if (!ordering) {
     ordering = {}
