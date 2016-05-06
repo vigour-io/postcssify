@@ -93,36 +93,43 @@ exports.Bundle.prototype.addJS = function addCSS (file, body, deps, options) {
 }
 
 exports.Bundle.prototype.loadRemote = function loadRemote (filename) {
-  return new Promise((resolve, reject) => {
-    var request = hh.get(filename, (response) => {
-      var body = ''
-      response.on('data', (chunk) => {
-        body += chunk.toString()
-      })
-      response.on('error', reject)
-      response.on('end', () => {
-        this.files[filename].body = body
-        // console.log('filename', filename)
-        // console.log('out', this.options.out)
-        // console.log('[] map', this.options.map)
-        return resolve(postcss([]).process(body, {
-          from: filename,
-          to: this.options.out,
-          map: this.options.map === false
-            ? false
-            : {
-              inline: this.options.map === true
-            }
+  if (!this.downloads) {
+    this.downloads = {}
+  }
+  if (!this.downloads[filename]) {
+    this.downloads[filename] = new Promise((resolve, reject) => {
+      console.log('downloading', filename)
+      var request = hh.get(filename, (response) => {
+        var body = ''
+        response.on('data', (chunk) => {
+          body += chunk.toString()
         })
-          .then((result) => {
-            this.files[filename].cache = result
-            return result
-          }))
+        response.on('error', reject)
+        response.on('end', () => {
+          this.files[filename].body = body
+          // console.log('filename', filename)
+          // console.log('out', this.options.out)
+          // console.log('[] map', this.options.map)
+          return resolve(postcss([]).process(body, {
+            from: filename,
+            to: this.options.out,
+            map: this.options.map === false
+              ? false
+              : {
+                inline: this.options.map === true
+              }
+          })
+            .then((result) => {
+              this.files[filename].cache = result
+              return result
+            }))
+        })
       })
+      request.on('error', reject)
+      request.end()
     })
-    request.on('error', reject)
-    request.end()
-  })
+  }
+  return this.downloads[filename]
 }
 
 exports.Bundle.prototype.rebundle = function rebundle (next) {
