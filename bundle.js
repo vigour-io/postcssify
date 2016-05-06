@@ -93,6 +93,9 @@ exports.Bundle.prototype.addJS = function addCSS (file, body, deps, options) {
 }
 
 exports.Bundle.prototype.loadRemote = function loadRemote (filename) {
+  if (this.files[filename].cache) {
+    return Promise.resolve(this.files[filename].cache)
+  }
   if (!this.downloads) {
     this.downloads = {}
   }
@@ -139,9 +142,6 @@ exports.Bundle.prototype.rebundle = function rebundle (next) {
         // console.log('file', file.name)
         if (isURL(file.name)) {
           // console.log('URL!')
-          if (file.cache) {
-            return file.cache
-          }
           return this.loadRemote(file.name, this.options)
         } else {
           // TODO replace only the real imports, not commented ones
