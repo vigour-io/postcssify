@@ -44,9 +44,9 @@ test('bundles', function (t) {
       fs.readFileAsync(cssMap, 'utf8'),
       fs.readFileAsync(cssExpectedMap, 'utf8')
     ]).then((contents) => {
-      t.equal(contents[0], contents[1], 'JS bundle')
-      t.equal(contents[2], contents[3], 'CSS bundle')
-      t.equal(contents[4], contents[5], 'CSS source map')
+      t.equal(contents[0] === contents[1], true, 'JS bundle')
+      t.equal(contents[2] === contents[3], true, 'CSS bundle')
+      t.equals(contents[4] === contents[5], true, 'CSS source map')
     }).catch((reason) => {
       console.error('reading files', reason)
     })
@@ -91,8 +91,8 @@ test('bundles with inline css maps', function (t) {
       fs.readFileAsync(cssOut, 'utf8'),
       fs.readFileAsync(cssExpected, 'utf8')
     ]).then((contents) => {
-      t.equal(contents[0], contents[1], 'JS bundle')
-      t.equal(contents[2], contents[3], 'CSS bundle with inline map')
+      t.equal(contents[0] === contents[1], true, 'JS bundle')
+      t.equal(contents[2] === contents[3], true, 'CSS bundle with inline map')
     }).catch((reason) => {
       console.error('reading files', reason)
     })
@@ -138,8 +138,8 @@ test('source maps', function (t) {
       fs.readFileAsync(cssOut, 'utf8'),
       fs.readFileAsync(cssExpected, 'utf8')
     ]).then((contents) => {
-      t.equal(contents[0], contents[1], 'JS bundle with map')
-      t.equal(contents[2], contents[3], 'CSS bundle without map')
+      t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+      t.equal(contents[2] === contents[3], true, 'CSS bundle without map')
     }).catch((reason) => {
       console.error('reading files', reason)
     })
@@ -186,9 +186,9 @@ test('modules', function (t) {
           fs.readFileAsync(cssMap, 'utf8'),
           fs.readFileAsync(cssExpectedMap, 'utf8')
         ]).then((contents) => {
-          t.equal(contents[0], contents[1], 'JS bundle with map')
-          t.equal(contents[2], contents[3], 'CSS bundle')
-          t.equal(contents[4], contents[5], 'CSS map')
+          t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+          t.equal(contents[2] === contents[3], true, 'CSS bundle')
+          t.equal(contents[4] === contents[5], true, 'CSS map')
         }).catch((reason) => {
           console.error('reading files', reason)
         })
@@ -237,9 +237,9 @@ test('links', function (t) {
           fs.readFileAsync(cssMap, 'utf8'),
           fs.readFileAsync(cssExpectedMap, 'utf8')
         ]).then((contents) => {
-          t.equal(contents[0], contents[1], 'JS bundle with map')
-          t.equal(contents[2], contents[3], 'CSS bundle')
-          t.equal(contents[4], contents[5], 'CSS map')
+          t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+          t.equal(contents[2] === contents[3], true, 'CSS bundle')
+          t.equal(contents[4] === contents[5], true, 'CSS map')
         }).catch((reason) => {
           console.error('reading files', reason)
         })
