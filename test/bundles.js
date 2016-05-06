@@ -44,8 +44,11 @@ test('bundles', function (t) {
       fs.readFileAsync(cssMap, 'utf8'),
       fs.readFileAsync(cssExpectedMap, 'utf8')
     ]).then((contents) => {
+      // console.log(jsOut, contents[0])
       t.equal(contents[0] === contents[1], true, 'JS bundle')
+      // console.log(cssOut, contents[2])
       t.equal(contents[2] === contents[3], true, 'CSS bundle')
+      // console.log(cssMap, contents[4])
       t.equals(contents[4] === contents[5], true, 'CSS source map')
     }).catch((reason) => {
       console.error('reading files', reason)
@@ -91,7 +94,9 @@ test('bundles with inline css maps', function (t) {
       fs.readFileAsync(cssOut, 'utf8'),
       fs.readFileAsync(cssExpected, 'utf8')
     ]).then((contents) => {
+      // console.log(jsOut, contents[0])
       t.equal(contents[0] === contents[1], true, 'JS bundle')
+      // console.log(cssOut, contents[2])
       t.equal(contents[2] === contents[3], true, 'CSS bundle with inline map')
     }).catch((reason) => {
       console.error('reading files', reason)
@@ -138,7 +143,9 @@ test('source maps', function (t) {
       fs.readFileAsync(cssOut, 'utf8'),
       fs.readFileAsync(cssExpected, 'utf8')
     ]).then((contents) => {
+      // console.log(jsOut, contents[0])
       t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+      // console.log(cssOut, contents[2])
       t.equal(contents[2] === contents[3], true, 'CSS bundle without map')
     }).catch((reason) => {
       console.error('reading files', reason)
@@ -186,8 +193,11 @@ test('modules', function (t) {
           fs.readFileAsync(cssMap, 'utf8'),
           fs.readFileAsync(cssExpectedMap, 'utf8')
         ]).then((contents) => {
+          // console.log(jsOut, contents[0])
           t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+          // console.log(cssOut, contents[2])
           t.equal(contents[2] === contents[3], true, 'CSS bundle')
+          // console.log(cssMap, contents[4])
           t.equal(contents[4] === contents[5], true, 'CSS map')
         }).catch((reason) => {
           console.error('reading files', reason)
@@ -237,8 +247,11 @@ test('links', function (t) {
           fs.readFileAsync(cssMap, 'utf8'),
           fs.readFileAsync(cssExpectedMap, 'utf8')
         ]).then((contents) => {
+          // console.log(jsOut, contents[0])
           t.equal(contents[0] === contents[1], true, 'JS bundle with map')
+          // console.log(cssOut, contents[2])
           t.equal(contents[2] === contents[3], true, 'CSS bundle')
+          // console.log(cssMap, contents[4])
           t.equal(contents[4] === contents[5], true, 'CSS map')
         }).catch((reason) => {
           console.error('reading files', reason)
