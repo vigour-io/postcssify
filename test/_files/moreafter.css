@@ -1,8 +1,0 @@
-:root {
-  --moreafter: 1px;
-  --common: url('more-after');
-}
-
-#moreafter {
-  border: var(--moreafter);
-}
