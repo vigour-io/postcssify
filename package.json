@@ -30,12 +30,12 @@
   },
   "homepage": "https://github.com/vigour-io/postcssify",
   "dependencies": {
+    "bole": "^2.0.0",
     "browser-resolve": "^1.11.1",
-    "http-https": "^1.0.0",
     "postcss": "^5.0.19",
     "postcss-cssnext": "^2.5.2",
-    "through2": "^2.0.1",
-    "vigour-util": "^2.0.5"
+    "postcss-url": "^5.1.2",
+    "through2": "^2.0.1"
   },
   "devDependencies": {
     "vigour-element": "^1.0.0"
