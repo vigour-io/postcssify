@@ -37,6 +37,9 @@
     "through2": "^2.0.1",
     "vigour-util": "^2.0.5"
   },
+  "devDependencies": {
+    "vigour-element": "^1.0.0"
+  },
   "engines": {
     "node": ">=4"
   }
