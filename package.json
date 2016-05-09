@@ -1,6 +1,6 @@
 {
   "name": "postcssify",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Browserify transform for postcss",
   "main": "lib/index.js",
   "scripts": {
@@ -38,14 +38,11 @@
     "through2": "^2.0.1"
   },
   "devDependencies": {
-    "vigour-element": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "devDependencies": {
     "browserify": "^13.0.0",
     "tape": "^4.5.1",
     "vigour-fs-promised": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
