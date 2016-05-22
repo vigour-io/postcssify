@@ -34,8 +34,8 @@
     "browser-resolve": "^1.11.1",
     "is-builtin-module": "^1.0.0",
     "postcss": "^5.0.19",
+    "postcss-calc": "^5.2.1",
     "postcss-cssnext": "^2.5.2",
-    "postcss-url": "^5.1.2",
     "through2": "^2.0.1"
   },
   "devDependencies": {
