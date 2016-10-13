@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/vigour-io/postcssify",
   "dependencies": {
+    "vigour-base": "^3.6.6",
     "bole": "^2.0.0",
     "browser-resolve": "^1.11.1",
     "is-builtin-module": "^1.0.0",
