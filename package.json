@@ -38,6 +38,7 @@
     "postcss-calc": "^5.2.1",
     "postcss-cssnext": "^2.5.2",
     "postcss-url": "^5.1.2",
+    "css-mediaquery": "0.1.2",
     "through2": "^2.0.1"
   },
   "devDependencies": {
