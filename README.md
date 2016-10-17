@@ -79,11 +79,11 @@ Let's create the CSS bundle (`browserify entry.js -p postcssify`):
 
 ## Node.js
 
-If you want to run the same code in node, you'll need to tell it to ignore `.css` files. One way of doing this is using [vigour-util's `require`](https://github.com/vigour-io/util#enhancerequireoptions):
+If you want to run the same code in node, you'll need to tell it to ignore `.css` files. One way of doing this is using the [enhance-require](https://www.npmjs.com/package/enhance-require) package (hacky but makes it easy)
 
 ```javascript
-var enhanceRequire = require('vigour-util/require')
-enhanceRequire()
-require('entry.js') // required styles will simply be ignored
-enhanceRequire.restore()
+const enhanceRequire = require('enhance-require')
+enhanceRequire() // overwrites require
+require('entry.js') // required styles will be ignored
+enhanceRequire.restore() // restores require
 ```
