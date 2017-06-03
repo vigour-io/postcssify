@@ -34,7 +34,7 @@
     "bole": "^3.0.0",
     "browser-resolve": "^1.11.1",
     "is-builtin-module": "^1.0.0",
-    "postcss": "^6.0.0",
+    "postcss": "^5.0.0",
     "postcss-calc": "^5.0.0",
     "postcss-cssnext": "^2.0.0",
     "postcss-url": "^5.1.2",
